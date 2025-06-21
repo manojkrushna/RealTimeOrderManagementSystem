@@ -1,0 +1,21 @@
+package com.rtoms.notification.notification_service.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+/**
+ * @author Manoj Krushna Mohanta
+ * 21-06-2025 15:18
+ */
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PaymentEvent {
+    private UUID orderId;
+    private String status;
+
+}
