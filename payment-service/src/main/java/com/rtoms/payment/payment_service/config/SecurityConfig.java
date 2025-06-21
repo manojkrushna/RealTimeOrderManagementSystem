@@ -1,4 +1,4 @@
-package com.rtoms.product.product_service.config;
+package com.rtoms.payment.payment_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

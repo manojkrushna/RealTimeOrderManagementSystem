@@ -21,7 +21,9 @@ public interface ProductController {
     @GetMapping
     ResponseEntity<List<Product>> getAll();
 
-    @PostMapping
+    @PostMapping(
+            consumes = "application/json",
+            produces = "application/json")
     @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<Product> create(@RequestBody Product product);
 }
