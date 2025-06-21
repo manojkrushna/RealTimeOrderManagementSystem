@@ -2,6 +2,7 @@ package com.rtoms.product.product_service.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,11 +14,12 @@ import java.util.UUID;
  * 21-06-2025 16:51
  */
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "products")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id
@@ -27,6 +29,5 @@ public class Product {
     private String description;
     private BigDecimal price;
     private Integer stock;
-
 
 }

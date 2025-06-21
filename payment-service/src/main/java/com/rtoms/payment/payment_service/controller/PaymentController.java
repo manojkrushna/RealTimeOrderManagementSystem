@@ -4,6 +4,7 @@ import com.rtoms.payment.payment_service.entity.Payment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.UUID;
@@ -18,4 +19,7 @@ public interface PaymentController {
 
     @GetMapping("/{orderId}")
     ResponseEntity<Payment> getPayment(@PathVariable UUID orderId);
+
+    @PostMapping("/process/{orderId}")
+    ResponseEntity<Payment> processPayment(@PathVariable UUID orderId);
 }

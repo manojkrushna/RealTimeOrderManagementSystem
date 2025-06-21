@@ -1,0 +1,66 @@
+{
+  "realm": "rtoms",
+  "enabled": true,
+  "users": [
+    {
+      "username": "adminuser",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "admin@rtoms.local",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ADMIN"]
+    },
+    {
+      "username": "customeruser",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Customer",
+      "lastName": "User",
+      "email": "customer@rtoms.local",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "customer123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["CUSTOMER"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "ADMIN",
+        "description": "Administrator role for RTOMS"
+      },
+      {
+        "name": "CUSTOMER",
+        "description": "Customer role for RTOMS"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "rtoms-client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "redirectUris": ["*"],
+      "defaultRoles": ["CUSTOMER"],
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "attributes": {
+        "token-exchange": "true"
+      }
+    }
+  ]
+}

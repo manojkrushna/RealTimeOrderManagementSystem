@@ -5,6 +5,7 @@ import com.rtoms.payment.payment_service.entity.Payment;
 import com.rtoms.payment.payment_service.repository.PaymentRepository;
 import com.rtoms.payment.payment_service.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +24,12 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     @Autowired
-    Payment payment;
-
-    @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
+    @Override
     public Payment processPayment(UUID orderId) {
+
+        Payment payment = new Payment();
 
         payment.setOrderId(orderId);
         payment.setStatus("SUCCESS");
@@ -37,6 +38,13 @@ public class PaymentServiceImpl implements PaymentService {
         Payment saved = paymentRepository.save(payment);
         kafkaTemplate.send("payment.completed", new PaymentEvent(orderId, "SUCCESS"));
         return saved;
+    }
+
+    @Override
+    public ResponseEntity<Payment> getPaymentResponseEntity(UUID orderId) {
+        return paymentRepository.findByOrderId(orderId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

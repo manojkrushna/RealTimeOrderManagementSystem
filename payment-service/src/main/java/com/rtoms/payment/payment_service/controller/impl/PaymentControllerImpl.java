@@ -3,6 +3,7 @@ package com.rtoms.payment.payment_service.controller.impl;
 import com.rtoms.payment.payment_service.controller.PaymentController;
 import com.rtoms.payment.payment_service.entity.Payment;
 import com.rtoms.payment.payment_service.repository.PaymentRepository;
+import com.rtoms.payment.payment_service.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +22,17 @@ public class PaymentControllerImpl implements PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    PaymentService paymentService;
+
     public ResponseEntity<Payment> getPayment(@PathVariable UUID orderId) {
-        return paymentRepository.findByOrderId(orderId)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        return paymentService.getPaymentResponseEntity(orderId);
+    }
+
+    @Override
+    public ResponseEntity<Payment> processPayment(UUID orderId) {
+        Payment payment = paymentService.processPayment(orderId);
+        return ResponseEntity.ok(payment);
     }
 
 }
