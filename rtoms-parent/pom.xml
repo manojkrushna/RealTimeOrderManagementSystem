@@ -28,6 +28,10 @@
         <lettuce.version>6.6.0.RELEASE</lettuce.version>
         <spring.context.version>6.2.8</spring.context.version>
         <lombok.version>1.18.38</lombok.version>
+        <springdoc.version>2.1.0</springdoc.version>
+        <jjwt.version>0.12.6</jjwt.version>
+        <java.jwt.version>4.5.0</java.jwt.version>
+
     </properties>
 
     <dependencyManagement>
