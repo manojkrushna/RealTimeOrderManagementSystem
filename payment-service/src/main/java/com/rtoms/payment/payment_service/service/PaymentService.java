@@ -1,6 +1,7 @@
 package com.rtoms.payment.payment_service.service;
 
 import com.rtoms.payment.payment_service.entity.Payment;
+import org.springframework.http.ResponseEntity;
 
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ import java.util.UUID;
  */
 
 public interface PaymentService {
+
+    ResponseEntity<Payment> getPaymentResponseEntity(UUID orderId);
 
     Payment processPayment(UUID orderId);
 }

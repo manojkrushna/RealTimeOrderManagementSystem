@@ -9,5 +9,19 @@ spring:
     show-sql: true
   kafka:
     bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000
+      database: 0
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/rtoms
   cache:
     type: ehcache
