@@ -6,7 +6,7 @@ A scalable, event-driven backend ecosystem built with Java and Spring Boot that 
 
 ## 🚀 Tech Stack
 
-- **Java 17**, **Spring Boot 3**, **Spring Security**, **Hibernate**
+- **Java 24**, **Spring Boot 3**, **Spring Security**, **Hibernate**
 - **Apache Kafka** – for asynchronous communication
 - **Redis** – high-speed data caching
 - **Ehcache** – Hibernate second-level cache
@@ -70,18 +70,44 @@ docker-compose up --build
 
 
 📂 Directory Layout
+
 RTOMS/
-├── product-service/
-├── order-service/
-├── inventory-service/
-├── payment-service/
-├── notification-service/
 ├── docker-compose.yml
-└── README.md
+├── rtoms-realm.json
+├── rtoms-parent/
+│   └── pom.xml                 # Centralized dependency & plugin management
+├── product-service/
+│   ├── pom.xml
+│   └── src/
+│       ├── main/
+│       │   ├── java/com/rtoms/product/
+│       │   │   ├── controller/
+│       │   │   ├── service/
+│       │   │   ├── repository/
+│       │   │   └── entity/
+│       │   └── resources/
+│       │       └── application.yml
+│       └── test/
+│           └── java/com/rtoms/product/
+├── order-service/
+│   ├── pom.xml
+│   └── src/...                 # Same packaging as product-service
+├── payment-service/
+│   └── src/...
+├── inventory-service/
+│   └── src/...
+├── notification-service/
+│   └── src/...
+├── gateway-service/ (optional)
+│   └── src/...                 # For Swagger, routing, central auth
+└── keycloak/
+    └── Docker-managed         # Realm import + mounted config
+
 
 ✏️ Future Enhancements :
 
 Add email/SMS integration to Notification service
+Payment gateway implementation
 Add order tracking & reporting dashboard (React/Angular frontend)
 CI/CD pipeline with GitHub Actions or Jenkins
 
