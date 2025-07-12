@@ -15,6 +15,7 @@
         <module>../order-service</module>
         <module>../payment-service</module>
         <module>../notification-service</module>
+        <module>../user-management-service</module>
     </modules>
 
     <properties>
@@ -31,6 +32,7 @@
         <springdoc.version>2.1.0</springdoc.version>
         <jjwt.version>0.12.6</jjwt.version>
         <java.jwt.version>4.5.0</java.jwt.version>
+        <postgresql.version>42.7.3</postgresql.version>
 
     </properties>
 
@@ -135,6 +137,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
 
